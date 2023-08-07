@@ -44,5 +44,4 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          path: |
-            ./steps.archive.outputs.gz
+          path: ${{ steps.archive.outputs.gz }}

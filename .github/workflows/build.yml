@@ -1,4 +1,4 @@
-name: Clash.Meta-Alpha
+name: Clash.Meta
 on:
   - workflow_dispatch
 jobs:
@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: metacubex/clash.meta
-          ref: Alpha
+          ref: Meta
       - name: Versioning
         run: |
           ##
@@ -41,8 +41,7 @@ jobs:
           GZ="${NAME}-android-arm64-${VERSION}.gz"
           tar -caf $GZ ./${NAME}
           echo "gz=$GZ" >> $GITHUB_OUTPUT
-      - name: Checkout My
-        uses: actions/checkout@v3
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
         with:
-          path: my/
-          
+          path: ${{ steps.archive.outputs.gz }}
